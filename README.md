@@ -1,6 +1,6 @@
 # A complete PSHA you can read in an afternoon
 
-Tutorial material for **Geotechnical Hazards** (Imperial College London), Lectures 10 and 11:
+Tutorial material for **Geotechnical Hazards** (Imperial College London), Lectures 9–11:
 a probabilistic seismic hazard analysis (PSHA) of a toy model, written so that every step can be
 read and changed, and checked against **OpenQuake**.
 
@@ -9,6 +9,7 @@ read and changed, and checked against **OpenQuake**.
 | **PSHA Explorer** | runs in your browser: change the model, see hazard curves, spectra and disaggregation | [open](https://pstafford.github.io/geohazards-psha/) |
 | **1. PSHA from scratch** | the whole calculation in numpy, step by step | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pstafford/geohazards-psha/blob/main/notebooks/01_psha_from_scratch.ipynb) |
 | **2. The same PSHA in OpenQuake** | the model in OpenQuake's hazardlib, and the comparison | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pstafford/geohazards-psha/blob/main/notebooks/02_psha_with_openquake.ipynb) |
+| **3. Implementing a ground-motion model** | write Akkar & Bommer (2010) from its equation, check it against OpenQuake, then try Chiou & Youngs (2014) | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pstafford/geohazards-psha/blob/main/notebooks/03_implement_a_gmm.ipynb) |
 
 Colab needs only a Google account: open a notebook and choose *Runtime → Run all*. No Python
 experience is needed.
@@ -31,8 +32,9 @@ follows OpenQuake's conventions, so the two calculations agree (to about 0.1 % o
 * `psha/psha_toy.py`: the model in plain numpy: scenarios, ground motions, hazard curves,
   disaggregation and conditional mean spectra (about 300 lines)
 * `psha/psha_oq.py`: the same model built with OpenQuake hazardlib
-* `psha/cy14_coefficients.csv`: the coefficients of Chiou & Youngs (2014), from OpenQuake
-* `notebooks/`: the two notebooks
+* `psha/cy14_coefficients.csv`, `psha/ab10_coefficients.csv`: the coefficients of Chiou & Youngs (2014) and Akkar & Bommer (2010), from OpenQuake
+* `psha/ab10_check.csv`: OpenQuake's Akkar & Bommer (2010) predictions, to check your own implementation
+* `notebooks/`: the three notebooks
 * `docs/index.html`: the PSHA Explorer (a single file; it also works offline once downloaded)
 
 ## On your own computer
