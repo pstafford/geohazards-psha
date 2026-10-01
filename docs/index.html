@@ -989,8 +989,14 @@ window.PSHA_DATA = {"params":{"vs30":760.0,"fault_dist":50.0,"fault_left":35.0,"
     document.getElementById("dlcurves").addEventListener("click", downloadCurves);
     document.getElementById("dluhs").addEventListener("click", downloadUHS);
     buildTasks();
+    // settings from the address, for links from the slides: #tab=disagg&T=1&rp=475&fault_dist=20
+    var h = new URLSearchParams(location.hash.slice(1)), over = {};
+    SPEC.forEach(function (s) { if (s.key && h.has(s.key) && isFinite(+h.get(s.key))) over[s.key] = +h.get(s.key); });
+    if (h.has("T") && PERIODS.indexOf(+h.get("T")) >= 0) { S.T = +h.get("T"); sel.value = String(S.T); }
+    if (["curves", "uhs", "disagg", "sources"].indexOf(h.get("tab")) >= 0) setTab(h.get("tab"));
+    S.p = E.params(over);
     syncAll();
-    setRP(475);
+    setRP(h.has("rp") && +h.get("rp") >= 30 && +h.get("rp") <= 20000 ? +h.get("rp") : 475);
     build();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
